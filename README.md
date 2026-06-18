@@ -16,9 +16,9 @@ The input phrase is embedded with [SPECTER2](https://huggingface.co/allenai/spec
 
 Each active feature *f* receives a weight:
 
-$$w_f = \text{act}_f \cdot \log\!\left(\frac{N}{\text{df}_f}\right)$$
+$$w_f = \text{act}_f \cdot \log\left(\frac{N}{\text{df}_f}\right)$$
 
-where *N* is the corpus size and df*_f* is the number of papers for which feature *f* is active. This suppresses features that fire on most papers (capturing generic structure rather than concept-specific content), leaving a sharper, more discriminative signal. Weights are L1-normalized to sum to 1.
+where *N* is the corpus size and $df_f$ is the number of papers for which feature *f* is active ($\text{act}_f$). This suppresses features that fire on most papers (capturing generic structure rather than concept-specific content), leaving a sharper, more discriminative signal. Weights are L1-normalized to sum to 1.
 
 ### 3. Node scoring
 
@@ -26,7 +26,7 @@ Each paper *v* in the corpus receives a score:
 
 $$s(v) = \sum_f w_f \cdot a_{v,f}$$
 
-where **a**_v is the paper's pre-computed SAE activation vector. Because both the query weights and paper activations are sparse, this is a sparse dot product over at most *k* features — O(*kN*) across all papers. Papers below the 95th percentile score are zeroed out, leaving roughly the top 5% as candidates.
+where $a_v$ is the paper's pre-computed SAE activation vector. Because both the query weights and paper activations are sparse, this is a sparse dot product over at most *k* features — O(*kN*) across all papers. Papers below the 95th percentile score are zeroed out, leaving roughly the top 5% as candidates.
 
 ### 4. Heaviest path or tree
 
