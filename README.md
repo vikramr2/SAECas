@@ -6,6 +6,9 @@ Citation cascade tracing using Sparse Autoencoders (SAEs).
 
 A **cascade** is a chain (or tree) of papers through a citation network that are maximally relevant to a query phrase. The intuition is that a research idea doesn't appear in isolation — it propagates forward through citations. Given an input phrase such as *"protein folding neural networks"*, SAECas finds the sequence of papers that collectively best represents that concept as it evolved through the literature, following the citation graph from earlier foundational work to later applications.
 
+![sample_cascade](assets/sample_cascade.png)
+*A sample info cascade in a citation network showing the concept spread of protein folding neural networks*
+
 ## Algorithm
 
 ### 1. Query embedding and feature extraction
